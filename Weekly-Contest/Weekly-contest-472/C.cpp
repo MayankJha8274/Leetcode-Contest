@@ -99,9 +99,13 @@ public:
         if ( ans.size() == 0 ) return "" ;
 
         return *min_element( ans.begin() , ans.end() ) ;
+
+        // T.C = O( N ^ 2 )
+        // S.C = O( N ^ 2 )
         
     }
 };
+
 
 
 
