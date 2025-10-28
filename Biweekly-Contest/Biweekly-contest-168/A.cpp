@@ -19,6 +19,9 @@ public:
         sort( ans.begin() , ans.end() ) ;
 
         return ans[0] ;
+
+        // T.C = O( N^2 LOGN )
+        // S.C = O( N )
         
     }
 };
@@ -41,9 +44,13 @@ public:
             reverse( temp.end() - i - 1 , temp.end() ) ;
             ans = min( ans , temp ) ;
 
+            // T.C = O( N ^ 2 )
+            // S.C = 0( N )
+
         }
 
         return ans ;
         
     }
+
 };
