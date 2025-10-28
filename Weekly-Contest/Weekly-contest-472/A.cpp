@@ -13,6 +13,10 @@ public:
         }
 
         return -1 ;
+
+        // T.C = O( N )
+        // S.C = O( N )
         
     }
+
 };
