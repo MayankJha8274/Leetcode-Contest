@@ -1,49 +1,48 @@
 class Solution {
-public:
 
-    int solve( int num ) {
+    int solve( int digit ) {
 
         int ans = 0 ;
+        int first = 0 ;
 
-        while( num ) {
+        while ( digit ) {
 
-            int dig = num % 10 ;
-
-            if ( !( ans == 0 && dig == 0 ) ) 
-            ans = ans * 10 + dig ;
+            int dig = digit%10 ;
             
-            num /= 10 ;
-            
+            if ( ans == 0 && dig == 0 ) {
+                
+                digit /= 10 ;
+                continue ;
+
+            }
+
+            ans = ans * 10 + dig;
+
+            digit /= 10 ;
+
         }
 
         return ans ;
-        
+
     }
+public:
     int minMirrorPairDistance(vector<int>& nums) {
+
+        int idx = INT_MAX ;
 
         unordered_map<int,int> mpp ;
 
-       // for ( int i = 0 ; i < nums.size() ; i++ ) mpp[nums[i]] = i ;
-        
-        int mini = 1e9 ;
-
         for ( int i = 0 ; i < nums.size() ; i++ ) {
 
-            int call = solve( nums[i] ) ;
+            if ( mpp.find( nums[i] ) != mpp.end()  ) idx = min ( idx , i - mpp[nums[i]] ) ;
 
-            if ( mpp.find( nums[i] ) != mpp.end() ) {
+            mpp[solve(nums[i])] = i ;
 
-                mini = min( mini , abs( i - mpp[nums[i]] ) ) ;
-                
-            }
-
-            else mpp[call] = i ;
-            
         }
 
-        if ( mini == 1e9 ) return -1 ;
+        if ( idx == INT_MAX ) return -1 ;
 
-        return mini ;
+        return idx ;
         
     }
-}
+};
